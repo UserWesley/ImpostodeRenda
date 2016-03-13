@@ -1,15 +1,19 @@
 <?php
 
-$rendaBruta = $_POST['textSalarioBruto'];
+include_once ('index.php');
 
+$rendaBruta = $_POST['textSalarioBruto'];
 calculoINSS($rendaBruta);
-calculoImpostoRenda($descontoINSS);
+
+session_start();
+
 
 function calculoINSS($rendaBruta){
 	
 	if ($rendaBruta <= 1556.94){
 		
 		$descontoINSS = $rendaBruta -($rendaBruta * 0.08);
+		
 	}
 	
 	elseif ($rendaBruta <= 2594.92){
@@ -25,18 +29,24 @@ function calculoINSS($rendaBruta){
 	else{
 		
 		$rendaBruta = $rendaBruta - 5189.82; 
-		$descontoINSS  = $rendaBruta +( 5189.82 - (5189.82 * 0.11));
+	    $descontoINSS  = $rendaBruta +( 5189.82 - (5189.82 * 0.11));
 				
 	}
 	
+	$_SESSION['descontoINSS'] = $descontoINSS;
+	calculoImpostoRenda($descontoINSS);
+	
 }
+
 
 function calculoImpostoRenda($descontoINSS){
 	
 	if ($descontoINSS <= 1903.98){
-	
+		
+		$aliquota = "não tem";	
+		$deducao = "não tem";
 		$impostodeRenda = "Isento";
-		$salarioLiquido = $descontoINSS;
+        $salarioLiquido = $descontoINSS;
 		
 	}
 	
@@ -71,8 +81,12 @@ function calculoImpostoRenda($descontoINSS){
 		$salarioLiquido = $descontoINSS - $deducao;
 		
 	}
+	$_SESSION['aliquota'] = $aliquota;
+	$_SESSION['deducao'] = $deducao;
+	$_SESSION['salarioLiquido'] = $salarioLiquido;
 }
 
-echo $salarioLiquido;
+
+
 
 ?>
