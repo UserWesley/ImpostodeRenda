@@ -8,6 +8,7 @@
 	
 	<meta charset = "utf-8">
 	
+	<title>Cálculo Imposto de Renda</title>
 	<!-- Visualização Mobile -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
