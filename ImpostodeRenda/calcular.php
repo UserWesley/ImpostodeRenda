@@ -1,27 +1,3 @@
-<!DOCTYPE html>
-
-<html>
-
-<head>
-	
-	<meta charset = "utf-8">
-	
-	<title>Cálculo Imposto de Renda</title>
-	
-	<!-- Visualização Mobile -->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<!-- Incluindo Bootstrap CSS -->
-	<link href="_bootstrap-3.3.6-dist/_css/bootstrap.min.css" rel="stylesheet" media="screen">
-	
-	<!-- Incluindo Bootstrap JavaScript-->
-	<script src="_bootstrap-3.3.6-dist/_js/bootstrap.min.js"></script>
-	
-</head>
-<body>
-</body>
-</html>
-
 <?php
 include_once ('index.php');
 
@@ -74,8 +50,8 @@ function calculoImpostoRenda($descontoINSS){
 	
 	if ($descontoINSS <= 1903.98){
 		
-		$aliquota = "não tem";	
-		$deducao = "não tem";
+		$aliquota = "Isento";	
+		$deducao = "Isento";
 		$impostodeRenda = "Isento";
         $salarioLiquido = $descontoINSS;
 		
@@ -133,20 +109,34 @@ function visualizar(){
 	//Inserindo valores num array para visualizar dados dentro de uma tabela 
 	$resultado = array($salarioBruto, $descontoINSS, $aliquota, $deducao, $salarioLiquido);
 	
+	echo "<div class=\"container\">";
+	
+	//Bootstrap tabela responsiva
+	echo "<div class=\"table-responsive\">";
+	echo "<p>";
+	
 	//Tabela de visualização dos dados
-	echo "<table>";
+	echo "<table class=\"table table-bordered\">";
 		//Dados fixos
-		echo "<tr> <td>Salário Bruto</td><td>Desconto INSS</td><td>Aliquota</td><td>Dedução</td><td>Salário Liquído</td></tr>";
-	    //Dados Variados
-		echo "<tr>";
+		echo "<thead>";
+		echo "<tr class = \"info\"> <th>Salário Bruto</th><th>Desconto INSS</th><th>Aliquota</th><th>Dedução</th><th>Salário Liquído</th></tr>";
+		echo "</thead>";
+		
+		//Dados Variados
+		echo "<tbody>";
+		echo "<tr class = \"success\">";
 
-	  			echo "<td>".$resultado[0]."</td>";
-	            echo "<td>".$resultado[1]."</td>";
-	            echo "<td>".$resultado[2]."</td>";
-	            echo "<td>".$resultado[3]."</td>";
-	            echo "<td>".$resultado[4]."</td>";
+	  			echo "<td> R$ ".$resultado[0]."</td>";
+	            echo "<td> R$ ".$resultado[1]."</td>";
+	            echo "<td> R$ ".$resultado[2]."</td>";
+	            echo "<td> R$ ".$resultado[3]."</td>";
+	            echo "<td> R$ ".$resultado[4]."</td>";
 	                         
 	    echo"</tr>";
+	    echo "</tbody>";
 	echo "</table>";
+	echo "</div>";
+	echo "</div>";
 }
+
 ?>

@@ -22,17 +22,24 @@
 
 <body>
 	
-	<header> Cálculo de Imposto de Renda</header>
+	<header ><h1 class = "text-center"> Cálculo de Imposto de Renda</h1></header>
 
 	<section>
 	
-		<form action= "calcular.php" method = "POST" >
-  		
-    		<label for= "idSalarioBruto">Salário Bruto :</label>
-      		<input type = "text" name = "textSalarioBruto" id = "idSalarioBruto" placeholder = "2000,00" min = "0" required>
-
-			<input type ="submit" value = "Calcular" class="btn btn-success">
-		
+		<form action= "calcular.php" method = "POST" class = "form-horizontal" >
+  			<div class="form-group">
+    			<label for= "idSalarioBruto" class="control-label col-sm-2">Salário Bruto :</label>
+    			<div class="col-sm-10">
+      				<input type = "text" name = "textSalarioBruto" id = "idSalarioBruto" placeholder = "2000,00" required>
+			 	</div>
+ 			 </div>
+ 			 
+ 			 <div class="form-group">
+   			 	<div class="col-sm-offset-2 col-sm-10">
+					<input type ="submit" value = "Calcular" class="btn btn-success">
+			 	</div>
+ 			 </div>
+ 			 
 		</form>
 
 	</section>
