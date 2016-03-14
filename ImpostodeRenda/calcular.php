@@ -126,7 +126,7 @@ function visualizar(){
 	echo "<table class=\"table table-bordered\">";
 		//Dados fixos
 		echo "<thead>";
-		echo "<tr class = \"info\"> <th>Salário Bruto</th><th>Desconto INSS</th><th>Aliquota</th><th>Dedução</th><th>Salário Liquído</th></tr>";
+		echo "<tr class = \"info\"> <th>Salário Bruto</th><th>Descontado INSS</th><th>Aliquota</th><th>Dedução</th><th>Salário Liquído</th></tr>";
 		echo "</thead>";
 		
 		//Dados Variados
