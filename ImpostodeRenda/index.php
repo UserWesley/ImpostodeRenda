@@ -1,5 +1,3 @@
-<?php
-?>
 <!DOCTYPE html>
 
 <html>
@@ -26,25 +24,24 @@
     <script src="_jquery/jquerymaskmoney.js" type="text/javascript"></script>
     
 	<script type="text/javascript">
-	
+
+		//Função para utilizar mascara no dinheiro
         $(document).ready(function(){
-              $("input.mascaraDinheiro").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
+              $("input.classeMascaraSalarioBruto").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
         });
 
     </script>
     
-    
-
-	
-	
 </head>
 
 <body>
 	
-	<header ><h1 class = "text-center"> Cálculo de Imposto de Renda</h1></header>
-
+	<header><?php include_once 'menu.php';?></header>
+	
 	<section>
 	
+		<h1 class = "text-center"> Cálculo de Imposto de Renda</h1>
+		
 		<form action= "calcular.php" method = "POST" class = "form-horizontal" >
   			
   			<div class="form-group">
@@ -53,7 +50,7 @@
     			
     			<div class="col-sm-10">
     			
-      				<input type = "text" name = "textSalarioBruto" id="idSalarioBruto"  class ="mascaraDinheiro" required autofocus>
+      				<input type = "text" name = "textSalarioBruto" id="idSalarioBruto"  class ="classeMascaraSalarioBruto" required autofocus>
 			 	
 					<input type ="submit" value = "Calcular" id = "idCalcular" class="btn btn-success">
 				 
@@ -66,7 +63,5 @@
 	</section>
 
 </body>
-
-
 
 </html>
