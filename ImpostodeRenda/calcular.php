@@ -142,5 +142,5 @@ function visualizar(){
 	echo "</div>";
 	echo "</div>";
 }
-
+include_once ('rodape.html');
 ?>

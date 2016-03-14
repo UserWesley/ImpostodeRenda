@@ -84,6 +84,7 @@
 		</div> 
 		
 	</section>
+	<footer><?php include_once ('rodape.html');?></footer>
 
 </body>
 
