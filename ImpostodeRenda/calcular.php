@@ -1,13 +1,20 @@
+
+
+
 <?php
 include_once ('index.php');
 
-//Recebendo variavel com o valor bruto da outra página
-$rendaBruta = $_POST['textSalarioBruto'];
-//Chamando função para calcular INSS, passando como parametro valor bruto
-calculoINSS($rendaBruta);
+//Recebendo variavel com o valor bruto da outra página e formatando no formato americano para efetuar calculos
+$rendaBruta1 = str_replace("." , "" ,$_POST['textSalarioBruto']);
+$rendaBruta = str_replace("," , "." ,$rendaBruta1);
 
 //Iniciando sessão
 session_start();
+
+$_SESSION['rendaBruta'] = $rendaBruta;
+
+//Chamando função para calcular INSS, passando como parametro valor bruto
+calculoINSS($rendaBruta);
 
 //Esta função irá verificar qual faixa o salário bruto entra e fazer o devido cálculo
 function calculoINSS($rendaBruta){
@@ -50,9 +57,9 @@ function calculoImpostoRenda($descontoINSS){
 	
 	if ($descontoINSS <= 1903.98){
 		
-		$aliquota = "Isento";	
-		$deducao = "Isento";
-		$impostodeRenda = "Isento";
+		$aliquota = 0;	
+		$deducao = 0;
+		$impostodeRenda = 0;
         $salarioLiquido = $descontoINSS;
 		
 	}
@@ -98,13 +105,13 @@ function calculoImpostoRenda($descontoINSS){
 
 //Esta função irá mostrar os dados em uma tabela dividos passo a passo até chegar no salário liquido
 function visualizar(){
-	
-	//Atribuindo valores de sessão a variaveis locais para simplicar o código
-	$salarioBruto = $_POST['textSalarioBruto'];
-	$descontoINSS = $_SESSION['descontoINSS'];
-	$aliquota = $_SESSION['aliquota'];
-	$deducao = $_SESSION['deducao'];
-	$salarioLiquido = $_SESSION['salarioLiquido'];
+
+	//Atribuindo valores de sessão a variaveis locais para simplicar o código, também formata o modelo
+	$salarioBruto = number_format($_SESSION['rendaBruta'], 2, ',', '.');
+	$descontoINSS = number_format($_SESSION['descontoINSS'], 2, ',', '.');
+	$aliquota = number_format($_SESSION['aliquota'], 2, ',', '.');
+	$deducao = number_format($_SESSION['deducao'], 2, ',', '.');
+	$salarioLiquido = number_format($_SESSION['salarioLiquido'], 2, ',', '.');
 	
 	//Inserindo valores num array para visualizar dados dentro de uma tabela 
 	$resultado = array($salarioBruto, $descontoINSS, $aliquota, $deducao, $salarioLiquido);
