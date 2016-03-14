@@ -20,10 +20,10 @@
 	<script src="_bootstrap-3.3.6-dist/_js/bootstrap.min.js"></script>
 	
 	<!-- Incluindo jquery-->
-	<script src="jquery.js"></script>
+	<script src="_jquery/jquery.js"></script>
 	
 	<!-- Incluindo jquery Maskmoney-->
-    <script src="jquerymaskmoney.js" type="text/javascript"></script>
+    <script src="_jquery/jquerymaskmoney.js" type="text/javascript"></script>
     
 	<script type="text/javascript">
 	
